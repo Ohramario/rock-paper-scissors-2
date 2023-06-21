@@ -23,7 +23,7 @@ function playRound(playerSelection, computerSelection) {
     /* evaluates and returns draw condition */
     if (playerString == computerSelection) {
 
-        let drawMessage = "Welcome to JavaScript"; 
+        let drawMessage = "It is a draw !"; 
 
         return drawMessage;
     }
@@ -44,3 +44,8 @@ function playRound(playerSelection, computerSelection) {
         return lossMessage;
     }
 }
+
+const playerSelection = "rock";
+
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
