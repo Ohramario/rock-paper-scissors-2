@@ -11,9 +11,36 @@ function getComputerChoice() {
     let computerString = strings[randomIndex];
 
     return computerString;
-
 }
 
-let choice = getComputerChoice();
 
-console.log(choice);
+
+function playRound(playerSelection, computerSelection) {
+
+    let playerString = playerSelection.toLowerCase();
+
+
+    /* evaluates and returns draw condition */
+    if (playerString == computerSelection) {
+
+        let drawMessage = "Welcome to JavaScript"; 
+
+        return drawMessage;
+    }
+
+    /*evaluates and returns win condition */
+
+    if ((playerString == "rock" && computerSelection == "scissors") || (playerString == "scissors" && computerSelection == "paper") || (playerString == "paper" && computerString == "rock")){
+        let winMessage = "Player wins !";
+
+        return winMessage;
+    }
+
+    /*evaluates and returns loss condition */
+
+    if ((playerString == "rock" && computerSelection == "paper") || (playerString == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper")) {
+        let lossMessage = "Player loses !";
+        
+        return lossMessage;
+    }
+}
