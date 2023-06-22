@@ -1,3 +1,9 @@
+const rock = "rock";
+const paper = "paper";
+const scissors = "scissors";
+
+
+
 function getComputerChoice() {
 
 
@@ -17,28 +23,36 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
 
-    let playerString = playerSelection.toLowerCase();
+    let playerString = playerSelection;
+
+
+    const conditions = [playerString == rock && computerSelection == scissors, playerString == scissors && computerSelection == paper, playerString == paper && computerString == rock];
+
+    const allConditionsMet = conditions.every(condition => condition);
+
+
+    if (allConditionsMet) {
+
+        let winMessage = "Player Wins !"
+        return winMessage;
+    }
 
 
     /* evaluates and returns draw condition */
-    if (playerString == computerSelection) {
+    else if (playerString == computerSelection) {
 
         let drawMessage = "It is a draw !";
 
         return drawMessage;
     }
 
-    /*evaluates and returns win condition */
-
-    if ((playerString == "rock" && computerSelection == "scissors") || (playerString == "scissors" && computerSelection == "paper") || (playerString == "paper" && computerString == "rock")) {
-        let winMessage = "Player wins !";
-
-        return winMessage;
-    }
 
     /*evaluates and returns loss condition */
 
-    if ((playerString == "rock" && computerSelection == "paper") || (playerString == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper")) {
+
+
+    else {
+
         let lossMessage = "Player loses !";
 
         return lossMessage;
@@ -46,17 +60,46 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
-function game {
+function game() {
 
-    const playerSelection = "rock";
+    let playerInput = prompt("Please input one of the following: rock, paper, scissors");
 
-    const computerSelection = getComputerChoice();
+    let choice = playerInput.toLowerCase();
+
+
+    let playerSelection = checkValidity(choice);
+
+
+    let computerSelection = getComputerChoice();
 
 
     console.log(playRound(playerSelection, computerSelection));
 
+}
+
+
+/* function checks if valid player input */
+function checkValidity(input) {
+
+
+
+    if (input == rock || input == scissors || input == paper) {
+
+        return input;
+
+
+    } else {
+
+
+        let againMessage = "Not valid, please refresh page";
+
+        alert(againMessage);
+    }
 
 }
+
+game();
+
 
 
 
