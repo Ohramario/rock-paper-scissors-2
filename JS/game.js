@@ -23,14 +23,14 @@ function playRound(playerSelection, computerSelection) {
     /* evaluates and returns draw condition */
     if (playerString == computerSelection) {
 
-        let drawMessage = "It is a draw !"; 
+        let drawMessage = "It is a draw !";
 
         return drawMessage;
     }
 
     /*evaluates and returns win condition */
 
-    if ((playerString == "rock" && computerSelection == "scissors") || (playerString == "scissors" && computerSelection == "paper") || (playerString == "paper" && computerString == "rock")){
+    if ((playerString == "rock" && computerSelection == "scissors") || (playerString == "scissors" && computerSelection == "paper") || (playerString == "paper" && computerString == "rock")) {
         let winMessage = "Player wins !";
 
         return winMessage;
@@ -40,12 +40,23 @@ function playRound(playerSelection, computerSelection) {
 
     if ((playerString == "rock" && computerSelection == "paper") || (playerString == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper")) {
         let lossMessage = "Player loses !";
-        
+
         return lossMessage;
     }
 }
 
-const playerSelection = "rock";
 
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game {
+
+    const playerSelection = "rock";
+
+    const computerSelection = getComputerChoice();
+
+
+    console.log(playRound(playerSelection, computerSelection));
+
+
+}
+
+
+
