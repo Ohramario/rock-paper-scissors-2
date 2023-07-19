@@ -25,6 +25,8 @@ function playRound(playerSelection, computerSelection) {
 
     let playerString = playerSelection;
 
+    /* evaluates win conditions */
+
 
     const conditions = [playerString == rock && computerSelection == scissors, playerString == scissors && computerSelection == paper, playerString == paper && computerString == rock];
 
