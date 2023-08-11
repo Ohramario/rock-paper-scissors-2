@@ -7,10 +7,6 @@ const scissors = "scissors";
 
 let playerScore = 0;
 let computerScore = 0;
-let runningScore = "player: " + playerScore + ", computer: " + computerScore;
-
-
-
 
 function getComputerChoice() {
 
@@ -35,14 +31,18 @@ function playRound(playerSelection, computerSelection) {
 
     let computerString = computerSelection;
 
+    let allConditionsMet = false;
+
     /* evaluates win conditions */
 
 
     const conditions = [playerString == rock && computerString == scissors, playerString == scissors && computerString == paper, playerString == paper && computerString == rock];
 
-    const allConditionsMet = conditions.every(condition => condition);
+    if (conditions.includes(true)) {
 
+        allConditionsMet = true;
 
+    }
 
 
 
@@ -53,9 +53,10 @@ function playRound(playerSelection, computerSelection) {
 
 
         if (playerScore == 5) {
+            reset();
             return "player wins"
         } else {
-            return runningScore;
+            return "player: " + playerScore + ", computer: " + computerScore;
         }
 
     }
@@ -78,6 +79,7 @@ function playRound(playerSelection, computerSelection) {
         increment("computer");
 
         if (computerScore == 5) {
+            reset();
             return "computer wins!"
         } else {
             return "player: " + playerScore + ", computer: " + computerScore;
@@ -95,6 +97,11 @@ function increment(variable) {
     }
 }
 
+function reset() {
+    playerScore = 0;
+    computerScore = 0;
+
+}
 
 
 function game(input) {
@@ -104,8 +111,11 @@ function game(input) {
 
     let computerSelection = getComputerChoice();
 
+    showResults(playerSelection, computerSelection);
 
+/*
     console.log(playRound(playerSelection, computerSelection));
+    */
 
 }
 
@@ -121,6 +131,23 @@ buttons.forEach((button) => {
         game(button.id);
     });
 });
+
+//displaying results on the web page
+
+function showResults(player, computer) {
+
+    const results = document.querySelector("#results");
+
+    const content = document.createElement("div");
+
+    content.classList.add("content");
+
+    content.textContent = playRound(player, computer);
+
+    results.appendChild(content);
+
+}
+
 
 
 
